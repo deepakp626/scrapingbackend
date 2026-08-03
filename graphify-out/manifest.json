@@ -1,0 +1,37 @@
+{
+  "C:\\Users\\user\\Desktop\\scrapingBackend\\app\\api\\blogRoute.py": {
+    "mtime": 1785360200.621928,
+    "ast_hash": "cdc771cb3907d1c93a1d1b0cea04280b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\user\\Desktop\\scrapingBackend\\app\\routes.py": {
+    "mtime": 1785183861.0977457,
+    "ast_hash": "7865843281ab30a3819f92bfa62dbbac",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\user\\Desktop\\scrapingBackend\\database\\db.py": {
+    "mtime": 1785357038.2335348,
+    "ast_hash": "9934ad5f2b89cb3a97b86902558ad516",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\user\\Desktop\\scrapingBackend\\main.py": {
+    "mtime": 1785357028.5765462,
+    "ast_hash": "f70173d4bb370c880ceeeaf1c0d052f9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\user\\Desktop\\scrapingBackend\\models\\blog.py": {
+    "mtime": 1785359960.9584723,
+    "ast_hash": "1555c016d253cc613e0d3f10343a40e8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\user\\Desktop\\scrapingBackend\\services\\blogServices.py": {
+    "mtime": 1785357539.1845877,
+    "ast_hash": "65db9eac761bbaeb6df02d18bc11fc67",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\user\\Desktop\\scrapingBackend\\README.md": {
+    "mtime": 1785093470.5715992,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  }
+}
