@@ -173,9 +173,23 @@ async def get_paginated_blogs(db: AsyncSession,page: int = 1,limit: int = 10,):
     )
 
     blogs = result.scalars().all()
+    
+    blog_list = [
+    {
+        "id": blog.id,
+        "slug": blog.slug,
+        "title": blog.title,
+        "description": blog.description,
+        "html_content": blog.html_content,
+        "date": blog.date.isoformat() if blog.date else None,
+        "thumbnail_image_url": blog.thumbnail_image_url,
+        "thumbnail_image_name": blog.thumbnail_image_name,
+    }
+    for blog in blogs
+]
 
     return {
-        "data": blogs,
+        "data": blog_list,
         "pagination": {
             "page": page,
             "limit": limit,

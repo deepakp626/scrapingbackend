@@ -20,7 +20,7 @@ DBNAME = os.getenv("dbname")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Create the SQLAlchemy engine
-engine = create_async_engine(DATABASE_URL,echo=True)
+engine = create_async_engine(DATABASE_URL,echo=True,pool_pre_ping=True,)
 
 # Create a configured "Session" class
 AsyncSessionLocal = async_sessionmaker(bind=engine,expire_on_commit=False)

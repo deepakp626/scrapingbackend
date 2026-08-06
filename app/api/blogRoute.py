@@ -76,8 +76,11 @@ async def createBlog(
     )
 
     return JSONResponse(
-        content=blogData,
-        status_code=201,
+        content={
+            "data":blogData,
+            "message":"Blog created successfully"
+            },
+        status_code=201
     )
 
 
@@ -104,7 +107,7 @@ class BlogUpdate(BaseModel):
     title: str = Field(..., min_length=3)
     description: str = Field(..., min_length=10)
     html_content: str = Field(..., min_length=1)
-    thumbnail_image_name: str = Field(..., min_length=1)
+    thumbnail_image_name: Optional[str] = None
 
     @classmethod
     def as_form(
@@ -113,14 +116,14 @@ class BlogUpdate(BaseModel):
         title: str = Form(...),
         description: str = Form(...),
         html_content: str = Form(...),
-        thumbnail_image_name: str = Form(...),
+        thumbnail_image_name: Optional[str] = Form(None),
     ):
         return cls(
             slug=slug.strip(),
             title=title.strip(),
             description=description.strip(),
             html_content=html_content.strip(),
-            thumbnail_image_name=thumbnail_image_name.strip(),
+            thumbnail_image_name=thumbnail_image_name.strip() if thumbnail_image_name else None,
         )
 
 @router.put("/updateBlog",response_model=BlogResponse)
@@ -158,10 +161,11 @@ async def deleteBlog(slug:str,db:AsyncSession = Depends(get_db)):
 
 
 
-@router.get("/getPaginatedBLog")
+@router.get("/getPaginatedBlog")
 async def getPaginatedBLog(page:int=1,limit:int=10,db:AsyncSession = Depends(get_db)):
     try:
         blogs = await get_paginated_blogs(db,page,limit)
+        
         return JSONResponse(content=blogs,status_code=200)
     except Exception as e:
         return JSONResponse(content={"message":str(e)},status_code=500)  
