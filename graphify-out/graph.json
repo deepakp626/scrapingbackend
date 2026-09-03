@@ -9,7 +9,7 @@
       "source_file": "app/api/blogRoute.py",
       "source_location": "L1",
       "id": "api_blogroute",
-      "community": 0,
+      "community": 5,
       "norm_label": "blogroute.py"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "app/api/blogRoute.py",
       "source_location": "L37",
       "id": "api_blogroute_blogcreate_as_form",
-      "community": 1,
+      "community": 0,
       "norm_label": ".as_form()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "app/api/blogRoute.py",
       "source_location": "L54",
       "id": "api_blogroute_createblog",
-      "community": 0,
+      "community": 8,
       "norm_label": "createblog()"
     },
     {
@@ -71,8 +71,8 @@
       "file_type": "code",
       "source_file": "app/api/blogRoute.py",
       "source_location": "L54",
-      "id": "uploadfile",
-      "community": 0,
+      "id": "app_api_blogroute_py_uploadfile",
+      "community": 8,
       "norm_label": "uploadfile"
     },
     {
@@ -88,7 +88,7 @@
       "label": "getLBog()",
       "file_type": "code",
       "source_file": "app/api/blogRoute.py",
-      "source_location": "L88",
+      "source_location": "L90",
       "id": "api_blogroute_getlbog",
       "community": 1,
       "norm_label": "getlbog()"
@@ -97,25 +97,34 @@
       "label": "BlogUpdate",
       "file_type": "code",
       "source_file": "app/api/blogRoute.py",
-      "source_location": "L102",
+      "source_location": "L105",
       "id": "api_blogroute_blogupdate",
       "community": 0,
       "norm_label": "blogupdate"
     },
     {
+      "label": ".as_form()",
+      "file_type": "code",
+      "source_file": "app/api/blogRoute.py",
+      "source_location": "L113",
+      "id": "api_blogroute_blogupdate_as_form",
+      "community": 0,
+      "norm_label": ".as_form()"
+    },
+    {
       "label": "updateBlog()",
       "file_type": "code",
       "source_file": "app/api/blogRoute.py",
-      "source_location": "L109",
+      "source_location": "L130",
       "id": "api_blogroute_updateblog",
-      "community": 0,
+      "community": 8,
       "norm_label": "updateblog()"
     },
     {
       "label": "deleteBlog()",
       "file_type": "code",
       "source_file": "app/api/blogRoute.py",
-      "source_location": "L126",
+      "source_location": "L149",
       "id": "api_blogroute_deleteblog",
       "community": 1,
       "norm_label": "deleteblog()"
@@ -124,19 +133,163 @@
       "label": "getPaginatedBLog()",
       "file_type": "code",
       "source_file": "app/api/blogRoute.py",
-      "source_location": "L140",
+      "source_location": "L165",
       "id": "api_blogroute_getpaginatedblog",
-      "community": 5,
+      "community": 4,
       "norm_label": "getpaginatedblog()"
     },
     {
       "label": "int",
       "file_type": "code",
       "source_file": "app/api/blogRoute.py",
-      "source_location": "L140",
+      "source_location": "L165",
       "id": "app_api_blogroute_py_int",
-      "community": 5,
+      "community": 4,
       "norm_label": "int"
+    },
+    {
+      "label": "code_Engine_Route.py",
+      "file_type": "code",
+      "source_file": "app/api/code_Engine_Route.py",
+      "source_location": "L1",
+      "id": "api_code_engine_route",
+      "community": 14,
+      "norm_label": "code_engine_route.py"
+    },
+    {
+      "label": "pdfRoute.py",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L1",
+      "id": "api_pdfroute",
+      "community": 10,
+      "norm_label": "pdfroute.py"
+    },
+    {
+      "label": "compress_pdf()",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L37",
+      "id": "api_pdfroute_compress_pdf",
+      "community": 11,
+      "norm_label": "compress_pdf()"
+    },
+    {
+      "label": "UploadFile",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L37",
+      "id": "app_api_pdfroute_py_uploadfile",
+      "community": 7,
+      "norm_label": "uploadfile"
+    },
+    {
+      "label": "float",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L37",
+      "id": "float",
+      "community": 11,
+      "norm_label": "float"
+    },
+    {
+      "label": "pdf_to_word()",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L256",
+      "id": "api_pdfroute_pdf_to_word",
+      "community": 13,
+      "norm_label": "pdf_to_word()"
+    },
+    {
+      "label": "lock_pdf()",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L379",
+      "id": "api_pdfroute_lock_pdf",
+      "community": 7,
+      "norm_label": "lock_pdf()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L379",
+      "id": "app_api_pdfroute_py_str",
+      "community": 7,
+      "norm_label": "str"
+    },
+    {
+      "label": "unlock_pdf()",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L468",
+      "id": "api_pdfroute_unlock_pdf",
+      "community": 7,
+      "norm_label": "unlock_pdf()"
+    },
+    {
+      "label": "ocr_pdf()",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L551",
+      "id": "api_pdfroute_ocr_pdf",
+      "community": 10,
+      "norm_label": "ocr_pdf()"
+    },
+    {
+      "label": "pdf_to_html()",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L655",
+      "id": "api_pdfroute_pdf_to_html",
+      "community": 7,
+      "norm_label": "pdf_to_html()"
+    },
+    {
+      "label": "extract_images_from_pdf()",
+      "file_type": "code",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L815",
+      "id": "api_pdfroute_extract_images_from_pdf",
+      "community": 7,
+      "norm_label": "extract_images_from_pdf()"
+    },
+    {
+      "label": "Compress PDF using PyMuPDF and Pillow.      POST /pdf/compress",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L41",
+      "id": "api_pdfroute_rationale_41",
+      "community": 11,
+      "norm_label": "compress pdf using pymupdf and pillow.      post /pdf/compress"
+    },
+    {
+      "label": "Convert PDF to Word.      PyMuPDF:         Extracts PDF text.      python-d",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L259",
+      "id": "api_pdfroute_rationale_259",
+      "community": 13,
+      "norm_label": "convert pdf to word.      pymupdf:         extracts pdf text.      python-d"
+    },
+    {
+      "label": "Extract text from uploaded PDF using native extraction with intelligent OCR fall",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L552",
+      "id": "api_pdfroute_rationale_552",
+      "community": 10,
+      "norm_label": "extract text from uploaded pdf using native extraction with intelligent ocr fall"
+    },
+    {
+      "label": "Convert an uploaded PDF document into standalone HTML using PyMuPDF and pdfminer",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L659",
+      "id": "api_pdfroute_rationale_659",
+      "community": 7,
+      "norm_label": "convert an uploaded pdf document into standalone html using pymupdf and pdfminer"
     },
     {
       "label": "routes.py",
@@ -146,6 +299,78 @@
       "id": "app_routes",
       "community": 2,
       "norm_label": "routes.py"
+    },
+    {
+      "label": "pdf_data_pytesseract.py",
+      "file_type": "code",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L1",
+      "id": "data_pipeline_pdf_data_pytesseract",
+      "community": 10,
+      "norm_label": "pdf_data_pytesseract.py"
+    },
+    {
+      "label": "PDFTextExtractor",
+      "file_type": "code",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L25",
+      "id": "data_pipeline_pdf_data_pytesseract_pdftextextractor",
+      "community": 10,
+      "norm_label": "pdftextextractor"
+    },
+    {
+      "label": ".extract_pdf_text()",
+      "file_type": "code",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L27",
+      "id": "data_pipeline_pdf_data_pytesseract_pdftextextractor_extract_pdf_text",
+      "community": 9,
+      "norm_label": ".extract_pdf_text()"
+    },
+    {
+      "label": "bytes",
+      "file_type": "code",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L27",
+      "id": "data_pipeline_pdf_data_pytesseract_py_bytes",
+      "community": 9,
+      "norm_label": "bytes"
+    },
+    {
+      "label": "._ocr_page()",
+      "file_type": "code",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L134",
+      "id": "data_pipeline_pdf_data_pytesseract_pdftextextractor_ocr_page",
+      "community": 9,
+      "norm_label": "._ocr_page()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L134",
+      "id": "data_pipeline_pdf_data_pytesseract_py_str",
+      "community": 9,
+      "norm_label": "str"
+    },
+    {
+      "label": "Extract text from PDF with hybrid native + OCR support and detailed page breakdo",
+      "file_type": "rationale",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L28",
+      "id": "data_pipeline_pdf_data_pytesseract_rationale_28",
+      "community": 9,
+      "norm_label": "extract text from pdf with hybrid native + ocr support and detailed page breakdo"
+    },
+    {
+      "label": "Render page as image and run OCR.",
+      "file_type": "rationale",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L135",
+      "id": "data_pipeline_pdf_data_pytesseract_rationale_135",
+      "community": 9,
+      "norm_label": "render page as image and run ocr."
     },
     {
       "label": "db.py",
@@ -162,7 +387,7 @@
       "source_file": "database/db.py",
       "source_location": "L29",
       "id": "database_db_get_db",
-      "community": 2,
+      "community": 5,
       "norm_label": "get_db()"
     },
     {
@@ -173,6 +398,60 @@
       "id": "database_db_connectdb",
       "community": 2,
       "norm_label": "connectdb()"
+    },
+    {
+      "label": "storage.py",
+      "file_type": "code",
+      "source_file": "database/storage.py",
+      "source_location": "L1",
+      "id": "database_storage",
+      "community": 3,
+      "norm_label": "storage.py"
+    },
+    {
+      "label": "upload_image()",
+      "file_type": "code",
+      "source_file": "database/storage.py",
+      "source_location": "L20",
+      "id": "database_storage_upload_image",
+      "community": 3,
+      "norm_label": "upload_image()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "database/storage.py",
+      "source_location": "L20",
+      "id": "database_storage_py_str",
+      "community": 3,
+      "norm_label": "str"
+    },
+    {
+      "label": "bytes",
+      "file_type": "code",
+      "source_file": "database/storage.py",
+      "source_location": "L20",
+      "id": "database_storage_py_bytes",
+      "community": 3,
+      "norm_label": "bytes"
+    },
+    {
+      "label": "delete_image()",
+      "file_type": "code",
+      "source_file": "database/storage.py",
+      "source_location": "L55",
+      "id": "database_storage_delete_image",
+      "community": 3,
+      "norm_label": "delete_image()"
+    },
+    {
+      "label": "replace_image()",
+      "file_type": "code",
+      "source_file": "database/storage.py",
+      "source_location": "L73",
+      "id": "database_storage_replace_image",
+      "community": 3,
+      "norm_label": "replace_image()"
     },
     {
       "label": "main.py",
@@ -187,7 +466,7 @@
       "label": "read_root()",
       "file_type": "code",
       "source_file": "main.py",
-      "source_location": "L14",
+      "source_location": "L23",
       "id": "main_read_root",
       "community": 2,
       "norm_label": "read_root()"
@@ -234,89 +513,134 @@
       "source_file": "services/blogServices.py",
       "source_location": "L1",
       "id": "services_blogservices",
-      "community": 4,
+      "community": 3,
       "norm_label": "blogservices.py"
     },
     {
       "label": "createBlog()",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L14",
+      "source_location": "L17",
       "id": "services_blogservices_createblog",
-      "community": 7,
+      "community": 3,
       "norm_label": "createblog()"
     },
     {
       "label": "AsyncSession",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L14",
+      "source_location": "L17",
       "id": "services_blogservices_py_asyncsession",
-      "community": 4,
+      "community": 3,
       "norm_label": "asyncsession"
     },
     {
       "label": "str",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L14",
+      "source_location": "L17",
       "id": "services_blogservices_py_str",
-      "community": 4,
+      "community": 3,
       "norm_label": "str"
     },
     {
       "label": "bytes",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L14",
-      "id": "bytes",
-      "community": 7,
+      "source_location": "L17",
+      "id": "services_blogservices_py_bytes",
+      "community": 3,
       "norm_label": "bytes"
     },
     {
       "label": "getBlogBySlug()",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L46",
+      "source_location": "L72",
       "id": "services_blogservices_getblogbyslug",
-      "community": 4,
+      "community": 3,
       "norm_label": "getblogbyslug()"
     },
     {
       "label": "updateBlogService()",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L65",
+      "source_location": "L93",
       "id": "services_blogservices_updateblogservice",
-      "community": 4,
+      "community": 3,
       "norm_label": "updateblogservice()"
     },
     {
       "label": "deleteBlogService()",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L88",
+      "source_location": "L134",
       "id": "services_blogservices_deleteblogservice",
-      "community": 4,
+      "community": 3,
       "norm_label": "deleteblogservice()"
     },
     {
       "label": "get_paginated_blogs()",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L104",
+      "source_location": "L158",
       "id": "services_blogservices_get_paginated_blogs",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_paginated_blogs()"
     },
     {
       "label": "int",
       "file_type": "code",
       "source_file": "services/blogServices.py",
-      "source_location": "L104",
+      "source_location": "L158",
       "id": "services_blogservices_py_int",
-      "community": 5,
+      "community": 4,
       "norm_label": "int"
+    },
+    {
+      "label": "image.py",
+      "file_type": "code",
+      "source_file": "utils/image.py",
+      "source_location": "L1",
+      "id": "utils_image",
+      "community": 12,
+      "norm_label": "image.py"
+    },
+    {
+      "label": "compress_image_to_webp()",
+      "file_type": "code",
+      "source_file": "utils/image.py",
+      "source_location": "L5",
+      "id": "utils_image_compress_image_to_webp",
+      "community": 12,
+      "norm_label": "compress_image_to_webp()"
+    },
+    {
+      "label": "bytes",
+      "file_type": "code",
+      "source_file": "utils/image.py",
+      "source_location": "L5",
+      "id": "utils_image_py_bytes",
+      "community": 12,
+      "norm_label": "bytes"
+    },
+    {
+      "label": "int",
+      "file_type": "code",
+      "source_file": "utils/image.py",
+      "source_location": "L5",
+      "id": "utils_image_py_int",
+      "community": 12,
+      "norm_label": "int"
+    },
+    {
+      "label": "Compress image only if its size is greater than target_size_kb.     Output form",
+      "file_type": "rationale",
+      "source_file": "utils/image.py",
+      "source_location": "L11",
+      "id": "utils_image_rationale_11",
+      "community": 12,
+      "norm_label": "compress image only if its size is greater than target_size_kb.     output form"
     },
     {
       "label": "README.md",
@@ -328,11 +652,74 @@
       "norm_label": "readme.md"
     },
     {
+      "label": "Compress PDF using PyMuPDF and Pillow.      POST /pdf/compress",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L33",
+      "community": 11,
+      "norm_label": "compress pdf using pymupdf and pillow.      post /pdf/compress",
+      "id": "api_pdfroute_rationale_33"
+    },
+    {
+      "label": "Convert PDF to Word.      PyMuPDF:         Extracts PDF text.      python-d",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L251",
+      "community": 13,
+      "norm_label": "convert pdf to word.      pymupdf:         extracts pdf text.      python-d",
+      "id": "api_pdfroute_rationale_251"
+    },
+    {
+      "label": "Compress PDF using PyMuPDF and Pillow.      POST /pdf/compress",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L35",
+      "community": 11,
+      "norm_label": "compress pdf using pymupdf and pillow.      post /pdf/compress",
+      "id": "api_pdfroute_rationale_35"
+    },
+    {
+      "label": "Convert PDF to Word.      PyMuPDF:         Extracts PDF text.      python-d",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L253",
+      "community": 13,
+      "norm_label": "convert pdf to word.      pymupdf:         extracts pdf text.      python-d",
+      "id": "api_pdfroute_rationale_253"
+    },
+    {
+      "label": "Unlock PDF.      PyMuPDF:         Unlocks PDF using password.      POST /pd",
+      "file_type": "rationale",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L374",
+      "community": 7,
+      "norm_label": "unlock pdf.      pymupdf:         unlocks pdf using password.      post /pd",
+      "id": "api_pdfroute_rationale_374"
+    },
+    {
+      "label": "UploadFile",
+      "file_type": "code",
+      "source_file": "app/api/blogRoute.py",
+      "source_location": "L54",
+      "community": 8,
+      "norm_label": "uploadfile",
+      "id": "uploadfile"
+    },
+    {
+      "label": "bytes",
+      "file_type": "code",
+      "source_file": "services/blogServices.py",
+      "source_location": "L14",
+      "community": 3,
+      "norm_label": "bytes",
+      "id": "bytes"
+    },
+    {
       "label": "Config",
       "file_type": "code",
       "source_file": "app/api/blogRoute.py",
       "source_location": "L19",
-      "community": 0,
+      "community": 5,
       "norm_label": "config",
       "id": "api_blogroute_config"
     }
@@ -552,9 +939,9 @@
       "source_file": "app/api/blogRoute.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_blogroute_blogcreate",
-      "target": "api_blogroute_blogcreate_as_form",
-      "confidence_score": 1.0
+      "target": "api_blogroute_blogcreate_as_form"
     },
     {
       "relation": "references",
@@ -574,9 +961,20 @@
       "source_file": "app/api/blogRoute.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_blogroute_blogcreate_as_form",
-      "target": "app_api_blogroute_py_str",
-      "confidence_score": 1.0
+      "target": "app_api_blogroute_py_str"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/blogRoute.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_blogroute_blogupdate_as_form",
+      "target": "app_api_blogroute_py_str"
     },
     {
       "relation": "references",
@@ -618,9 +1016,31 @@
       "source_file": "app/api/blogRoute.py",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_blogroute_createblog",
-      "target": "uploadfile",
-      "confidence_score": 1.0
+      "target": "app_api_blogroute_py_uploadfile"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/blogRoute.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_blogroute_createblog",
+      "target": "uploadfile"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/blogRoute.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_blogroute_updateblog",
+      "target": "app_api_blogroute_py_uploadfile"
     },
     {
       "relation": "references",
@@ -678,6 +1098,16 @@
       "target": "services_blogservices_getblogbyslug"
     },
     {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/blogRoute.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_blogroute_blogupdate",
+      "target": "api_blogroute_blogupdate_as_form"
+    },
+    {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
@@ -733,6 +1163,339 @@
       "target": "services_blogservices_get_paginated_blogs"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute",
+      "target": "api_pdfroute_compress_pdf"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L815",
+      "weight": 1.0,
+      "source": "api_pdfroute",
+      "target": "api_pdfroute_extract_images_from_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L448",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute",
+      "target": "api_pdfroute_lock_pdf"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L551",
+      "weight": 1.0,
+      "source": "api_pdfroute",
+      "target": "api_pdfroute_ocr_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L655",
+      "weight": 1.0,
+      "source": "api_pdfroute",
+      "target": "api_pdfroute_pdf_to_html",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute",
+      "target": "api_pdfroute_pdf_to_word"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L370",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute",
+      "target": "api_pdfroute_unlock_pdf"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "api_pdfroute",
+      "target": "data_pipeline_pdf_data_pytesseract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "api_pdfroute",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_compress_pdf",
+      "target": "app_api_pdfroute_py_uploadfile"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_compress_pdf",
+      "target": "float"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_rationale_33",
+      "target": "api_pdfroute_compress_pdf"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_rationale_35",
+      "target": "api_pdfroute_compress_pdf"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "api_pdfroute_rationale_41",
+      "target": "api_pdfroute_compress_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L815",
+      "weight": 1.0,
+      "source": "api_pdfroute_extract_images_from_pdf",
+      "target": "app_api_pdfroute_py_uploadfile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L448",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_lock_pdf",
+      "target": "app_api_pdfroute_py_uploadfile"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L551",
+      "weight": 1.0,
+      "source": "api_pdfroute_ocr_pdf",
+      "target": "app_api_pdfroute_py_uploadfile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L655",
+      "weight": 1.0,
+      "source": "api_pdfroute_pdf_to_html",
+      "target": "app_api_pdfroute_py_uploadfile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_pdf_to_word",
+      "target": "app_api_pdfroute_py_uploadfile"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L370",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_unlock_pdf",
+      "target": "app_api_pdfroute_py_uploadfile"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "app_api_pdfroute_py_uploadfile",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "float",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L251",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_rationale_251",
+      "target": "api_pdfroute_pdf_to_word"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L253",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_rationale_253",
+      "target": "api_pdfroute_pdf_to_word"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L259",
+      "weight": 1.0,
+      "source": "api_pdfroute_rationale_259",
+      "target": "api_pdfroute_pdf_to_word",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L448",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_lock_pdf",
+      "target": "app_api_pdfroute_py_str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L655",
+      "weight": 1.0,
+      "source": "api_pdfroute_pdf_to_html",
+      "target": "app_api_pdfroute_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L370",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_unlock_pdf",
+      "target": "app_api_pdfroute_py_str"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "app_api_pdfroute_py_str",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L374",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_pdfroute_rationale_374",
+      "target": "api_pdfroute_unlock_pdf"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L552",
+      "weight": 1.0,
+      "source": "api_pdfroute_rationale_552",
+      "target": "api_pdfroute_ocr_pdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/pdfRoute.py",
+      "source_location": "L659",
+      "weight": 1.0,
+      "source": "api_pdfroute_rationale_659",
+      "target": "api_pdfroute_pdf_to_html",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -742,6 +1505,89 @@
       "confidence_score": 1.0,
       "source": "main",
       "target": "app_routes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "data_pipeline_pdf_data_pytesseract",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "data_pipeline_pdf_data_pytesseract_pdftextextractor",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor_extract_pdf_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "data_pipeline_pdf_data_pytesseract_pdftextextractor",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor_ocr_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "data_pipeline_pdf_data_pytesseract_pdftextextractor_extract_pdf_text",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor_ocr_page",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "data_pipeline_pdf_data_pytesseract_pdftextextractor_extract_pdf_text",
+      "target": "data_pipeline_pdf_data_pytesseract_py_bytes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "data_pipeline_pdf_data_pytesseract_rationale_28",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor_extract_pdf_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "data_pipeline_pdf_data_pytesseract_pdftextextractor_ocr_page",
+      "target": "data_pipeline_pdf_data_pytesseract_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_pipeline/pdf_data_pytesseract.py",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "data_pipeline_pdf_data_pytesseract_rationale_135",
+      "target": "data_pipeline_pdf_data_pytesseract_pdftextextractor_ocr_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -795,6 +1641,223 @@
       "confidence_score": 1.0,
       "source": "main",
       "target": "database_db_connectdb"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage",
+      "target": "database_storage_delete_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage",
+      "target": "database_storage_replace_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage",
+      "target": "database_storage_upload_image"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage",
+      "target": "utils_image"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage",
+      "target": "utils_image_compress_image_to_webp"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices",
+      "target": "database_storage"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage_replace_image",
+      "target": "database_storage_upload_image"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage_upload_image",
+      "target": "database_storage_py_bytes"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage_upload_image",
+      "target": "database_storage_py_str"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage_upload_image",
+      "target": "utils_image_compress_image_to_webp"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices",
+      "target": "database_storage_upload_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices_createblog",
+      "target": "database_storage_upload_image"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage_delete_image",
+      "target": "database_storage_py_str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage_replace_image",
+      "target": "database_storage_py_str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage_replace_image",
+      "target": "database_storage_py_bytes"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "database/storage.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_storage_replace_image",
+      "target": "database_storage_delete_image"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices",
+      "target": "database_storage_delete_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L146",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices_deleteblogservice",
+      "target": "database_storage_delete_image"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices",
+      "target": "database_storage_replace_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices_updateblogservice",
+      "target": "database_storage_replace_image"
     },
     {
       "relation": "contains",
@@ -863,9 +1926,9 @@
       "source_file": "services/blogServices.py",
       "source_location": "L1",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "bytes",
-      "target": "models_blog_blog",
-      "confidence_score": 0.5
+      "target": "models_blog_blog"
     },
     {
       "relation": "imports",
@@ -897,6 +1960,16 @@
       "weight": 0.8,
       "confidence_score": 0.5,
       "source": "services_blogservices_py_asyncsession",
+      "target": "models_blog_blog"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L2",
+      "weight": 0.8,
+      "confidence_score": 0.5,
+      "source": "services_blogservices_py_bytes",
       "target": "models_blog_blog"
     },
     {
@@ -976,9 +2049,9 @@
       "source_file": "services/blogServices.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_blogservices_createblog",
-      "target": "bytes",
-      "confidence_score": 1.0
+      "target": "bytes"
     },
     {
       "relation": "references",
@@ -990,6 +2063,17 @@
       "confidence_score": 1.0,
       "source": "services_blogservices_createblog",
       "target": "services_blogservices_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices_createblog",
+      "target": "services_blogservices_py_bytes"
     },
     {
       "relation": "references",
@@ -1078,6 +2162,17 @@
       "confidence_score": 1.0,
       "source": "services_blogservices_updateblogservice",
       "target": "services_blogservices_py_str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "services/blogServices.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_blogservices_updateblogservice",
+      "target": "services_blogservices_py_bytes"
     },
     {
       "relation": "references",
@@ -1089,8 +2184,50 @@
       "confidence_score": 1.0,
       "source": "services_blogservices_get_paginated_blogs",
       "target": "services_blogservices_py_int"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/image.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_image",
+      "target": "utils_image_compress_image_to_webp"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/image.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_image_compress_image_to_webp",
+      "target": "utils_image_py_bytes"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/image.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_image_compress_image_to_webp",
+      "target": "utils_image_py_int"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/image.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_image_rationale_11",
+      "target": "utils_image_compress_image_to_webp"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f9b6f978b3fe79cbcd2c014f468693a043d987ce"
+  "built_at_commit": "12abdd581931c8a66cfe9dd381a8ca65154350e1"
 }
