@@ -10,7 +10,7 @@ dependencies = [
     "judge0api>=0.1.20",
     "pdfminer-six>=20260107",
     "pillow>=12.3.0",
-    "psycopg2>=2.9.12",
+    "psycopg2-binary==2.9.12",
     "pydantic>=2.13.4",
     "pymupdf>=1.28.2",
     "pypdf>=6.16.2",
