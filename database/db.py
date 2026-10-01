@@ -28,10 +28,7 @@ AsyncSessionLocal = async_sessionmaker(bind=engine,expire_on_commit=False)
 
 async def get_db():
     async with AsyncSessionLocal() as db:
-        try:
-            yield db
-        finally:
-            await db.close()
+        yield db
 
 # Test the connection
 def connectDB():

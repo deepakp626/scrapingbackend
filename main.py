@@ -17,7 +17,7 @@ app.add_middleware(
 connectDB()
 
 
-app.include_router(router,prefix="/api",tags=["blogs"])
+app.include_router(router,prefix="/api")
 
 @app.get("/")
 def read_root():

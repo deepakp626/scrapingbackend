@@ -9,10 +9,10 @@ from app.api import code_Engine_Route
 router = APIRouter()
 
 # blog routes
-router.include_router(blogRoute.router,tags=["blogs"])
+router.include_router(blogRoute.router,prefix="/blogs",tags=["blogs"])
 # pdf routes
-router.include_router(pdfRoute.router,tags=["PDF Tools"])
+router.include_router(pdfRoute.router,prefix="/pdf",tags=["PDF Tools"])
 
 #  Code execute route
-router.include_router(code_Engine_Route.router,tags=["Code Engine"])
+router.include_router(code_Engine_Route.router,prefix="/code",tags=["Code Engine"])
 

@@ -1,8 +1,8 @@
-from fastapi import HTTPException
+from fastapi import HTTPException,status
 from models.blog import Blog
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import IntegrityError,SQLAlchemyError
 from sqlalchemy import select, func
 from math import ceil
 from database.storage import upload_image,delete_image,replace_image
@@ -14,79 +14,203 @@ from storage3.exceptions import StorageApiError
 # db = SessionLocal()
 
 
-async def  createBlog(db: AsyncSession,slug: str, title: str,description: str,html_content: str, thumbnail_image: bytes | None = None,
-    thumbnail_image_name: str | None = None):
+async def createBlog(
+    db: AsyncSession,
+    slug: str,
+    title: str,
+    description: str,
+    html_content: str,
+    thumbnail_image: bytes | None = None,
+    thumbnail_image_name: str | None = None,
+):
+    """
+    Create a new blog with optional thumbnail image.
 
+    Flow:
+    1. Check slug.
+    2. Upload image if provided.
+    3. Create DB record.
+    4. Rollback + cleanup image if DB operation fails.
+    """
 
-    result = await db.execute(select(Blog).where(Blog.slug == slug))
-    blog = result.scalar_one_or_none()
-    if blog:
+    slug = slug.strip()
+
+    if not slug:
+        raise HTTPException(
+            status_code=400,
+            detail="Slug cannot be empty."
+        )
+
+    # ---------------------------------------------------------
+    # 1. Check whether blog slug already exists
+    # ---------------------------------------------------------
+    result = await db.execute(
+        select(Blog.id).where(Blog.slug == slug)
+    )
+
+    existing_blog_id = result.scalar_one_or_none()
+
+    if existing_blog_id:
         raise HTTPException(
             status_code=409,
-            detail=f"Blog slug already exists slug: {slug} create new unique slug"
+            detail=f"Blog slug already exists: {slug}, create unique slug"
         )
 
+    # ---------------------------------------------------------
+    # 2. Upload thumbnail
+    # ---------------------------------------------------------
     thumbnail_image_url = None
+    image_uploaded = False
+
     if thumbnail_image:
         try:
-            thumbnail_image_url = upload_image(
-                slug,
+            upload_result = upload_image(
+                slug=slug,
                 file_bytes=thumbnail_image,
             )
+
+            if not upload_result:
+                raise HTTPException(
+                    status_code=500,
+                    detail="Image upload returned empty response."
+                )
+
+            thumbnail_image_url = upload_result.get("url")
+
+            if not thumbnail_image_url:
+                raise HTTPException(
+                    status_code=500,
+                    detail="Image uploaded but URL was not returned."
+                )
+
+            image_uploaded = True
+
         except StorageApiError as e:
+
+            # -------------------------------------------------
+            # IMPORTANT:
+            # Image already exists in Supabase.
+            #
+            # Instead of returning 409, get/reuse the existing
+            # image URL if your storage function supports it.
+            # -------------------------------------------------
+
             raise HTTPException(
                 status_code=409,
-                detail=f"Image already exists : {str(e)}"
+                detail=f"Image already exists or storage error: {str(e)}"
             )
-    try:
-        newBlog = Blog(
-            slug=slug,
-            title=title,
-            description=description,
-            html_content=html_content,
-            # thumbnail_image_name=thumbnail_image_name,
-            thumbnail_image_url=thumbnail_image_url.get("url"),
-        )
 
-        db.add(newBlog)
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to upload thumbnail: {str(e)}"
+            )
+
+    # ---------------------------------------------------------
+    # 3. Create Blog object
+    # ---------------------------------------------------------
+    new_blog = Blog(
+        slug=slug,
+        title=title,
+        description=description,
+        html_content=html_content,
+        thumbnail_image_url=thumbnail_image_url,
+    )
+
+    try:
+
+        db.add(new_blog)
 
         await db.commit()
-        await db.refresh(newBlog)
+
+        await db.refresh(new_blog)
 
         return {
-            "id": newBlog.id,
-            "slug": newBlog.slug,
-            "title": newBlog.title,
-            "description": newBlog.description,
-            "html_content": newBlog.html_content,
-            "date": str(newBlog.date),
-            # "thumbnail_image_name":newBlog.thumbnail_image_name,
-            "thumbnail_image_url":newBlog.thumbnail_image_url
+            "id": new_blog.id,
+            "slug": new_blog.slug,
+            "title": new_blog.title,
+            "description": new_blog.description,
+            "html_content": new_blog.html_content,
+            "date": str(new_blog.date),
+            "thumbnail_image_url": new_blog.thumbnail_image_url,
         }
 
-    except SQLAlchemyError:
+    except IntegrityError as e:
+
         await db.rollback()
-        raise
+
+        # -----------------------------------------------------
+        # DB failed after image was uploaded.
+        # Remove uploaded image to avoid orphaned files.
+        # -----------------------------------------------------
+
+        if image_uploaded:
+            try:
+                delete_image(slug)
+            except Exception:
+                # Do not hide the original DB error
+                pass
+
+        raise HTTPException(
+            status_code=409,
+            detail=f"Blog slug already exists or violates a database constraint: {str(e.orig)}"
+        )
+
+    except SQLAlchemyError as e:
+
+        await db.rollback()
+
+        if image_uploaded:
+            try:
+                delete_image(slug)
+            except Exception:
+                pass
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"Database error: {str(e)}"
+        )
 
 
-async def getBlogBySlug(db:AsyncSession,slug:str):
+async def getBlogBySlug(db: AsyncSession, slug: str):
+    """
+    Fetches a single blog by its slug with validation and proper HTTP exceptions 
+    when not found or when the input is invalid.
+    """
+    # 1. Validate slug input
+    if not slug or not slug.strip():
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid blog slug provided."
+        )
 
-    blog = await db.execute(select(Blog).where(Blog.slug == slug.strip()))
-    blog = blog.scalar_one_or_none()
+    # 2. Query the database
+    result = await db.execute(select(Blog).where(Blog.slug == slug.strip()))
+    blog = result.scalar_one_or_none()
     
-    if blog == None:
-        return None
-        
+    print("blog ------------>>> ",blog,slug)
+    # 3. Handle not found case using HTTPException
+    if blog is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Blog with slug '{slug}' not found."
+        )
 
+    # 4. Return structured response
     return {
-        "id": blog.id,
-        "slug": blog.slug,
-        "title": blog.title,
-        "description": blog.description,
-        "html_content": blog.html_content,
-        "date": str(blog.date),
-        "thumbnail_image_url":blog.thumbnail_image_url,
-        "thumbnail_image_name":blog.thumbnail_image_name
+        "success": True,
+        "status_code": 200,
+        "message": "Blog fetched successfully.",
+        "data": {
+            "id": blog.id,
+            "slug": blog.slug,
+            "title": blog.title,
+            "description": blog.description,
+            "html_content": blog.html_content,
+            "date": str(blog.date),
+            "thumbnail_image_url": blog.thumbnail_image_url,
+            "thumbnail_image_name": blog.thumbnail_image_name
+        }
     }
 
 
@@ -131,27 +255,64 @@ async def updateBlogService(db:AsyncSession, slug:str,title:str,description:str,
 
 
 
-async def deleteBlogService(db: AsyncSession, slug: str):
+async def deleteBlogService(db: AsyncSession, slug: str, current_user_id: int = None, is_admin: bool = False):
+    """
+    Deletes a blog post by its slug with robust validation, authorization checks, 
+    and returns a standardized response for the frontend.
+    """
+    # 1. Validate slug format
+    if not slug or not slug.strip():
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid blog slug provided."
+        )
 
-    result = await db.execute(
-        select(Blog).where(Blog.slug == slug)
-    )
-
+    # 2. Fetch blog from database
+    result = await db.execute(select(Blog).where(Blog.slug == slug))
     blog = result.scalar_one_or_none()
 
+    # 3. Check if blog exists
     if blog is None:
-        return None
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Blog with slug '{slug}' not found."
+        )
 
+    # 4. Optional: Authorization check (ensure owner or admin is deleting)
+    if current_user_id and not is_admin and blog.author_id != current_user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You do not have permission to delete this blog."
+        )
+
+    # 5. Handle image deletion safely
     try:
         delete_image(slug)
     except Exception as e:
-        print(f"Image delete failed: {e} : so also blog noy deleting image : {slug}")
+        # Log the error properly in a production environment instead of just print
+        print(f"Warning: Image deletion failed for slug '{slug}': {e}")
+        # Depending on your business logic, you can choose to abort the deletion 
+        # or proceed. Here we proceed with database deletion, but warn the frontend/logs.
 
-    await db.delete(blog)
-    await db.commit()
+    # 6. Delete from database and commit
+    try:
+        await db.delete(blog)
+        await db.commit()
+    except Exception as e:
+        await db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred while deleting the blog from the database."
+        )
 
+    # 7. Return structured success response for frontend
     return {
-        "message": "Blog deleted successfully slug: {slug}"
+        "success": True,
+        "status_code": 200,
+        "message": f"Blog with slug '{slug}' deleted successfully.",
+        "data": {
+            "slug": slug
+        }
     }
 
 

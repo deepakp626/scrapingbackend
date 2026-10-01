@@ -23,10 +23,7 @@ from pdfminer.high_level import extract_text_to_fp
 from pdfminer.layout import LAParams
 
 
-router = APIRouter(
-    prefix="/pdf",
-    tags=["PDF Tools"]
-)
+router = APIRouter()
 
 
 # ============================================================

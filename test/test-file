@@ -1,0 +1,21 @@
+Recommended test matrix
+
+| Test | Language   | Purpose                   |
+| ---- | ---------- | ------------------------- |
+| 1    | Python     | stdin + stdout            |
+| 2    | C++        | Compile + execute         |
+| 3    | JavaScript | Node.js execution         |
+| 4    | Java       | JVM compile + execute     |
+| 5    | Python     | Runtime error             |
+| 6    | Python     | Infinite loop / timeout   |
+| 7    | C++        | Compilation error         |
+| 8    | Python     | Large memory usage        |
+| 9    | JavaScript | Large output              |
+| 10   | C++        | CPU-intensive calculation |
+
+
+
+4. Summary Recommendation
+Phase	Strategy	Backend	Frontend (Next.js)
+Current / MVP	Synchronous (wait=true)	Use def execute_code or asyncio.to_thread with client.wait = True.	Simple fetch("/api/code/execute"). Show a loading spinner until it resolves.
+Production / LeetCode scale	Asynchronous (wait=false + Poll)	POST /execute returns { token }. GET /status/{token} checks status.	POST code -> receive token -> poll /status/{token} every 500ms until completed.

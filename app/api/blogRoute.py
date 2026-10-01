@@ -4,6 +4,7 @@ from services.blogServices import createBlog as create_blog_service ,getBlogBySl
 from typing import Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel, Field
+from pydantic import ValidationError
 from datetime import date
 from database.db import get_db
 
@@ -73,6 +74,7 @@ async def createBlog(
         description=blog_data.description,
         html_content=blog_data.html_content,
         thumbnail_image=await thumbnail_image.read(),
+        thumbnail_image_name=blog_data.thumbnail_image_name,
     )
 
     return JSONResponse(
@@ -126,23 +128,54 @@ class BlogUpdate(BaseModel):
             thumbnail_image_name=thumbnail_image_name.strip() if thumbnail_image_name else None,
         )
 
-@router.put("/updateBlog",response_model=BlogResponse)
-async def updateBlog(blog_data: BlogUpdate = Depends(BlogUpdate.as_form),thumbnail_image: UploadFile = File(...),db: AsyncSession = Depends(get_db)):
+
+@router.put("/updateBlog")
+async def updateBlog(
+    slug: str = Form(...),
+    title: str = Form(...),
+    description: str = Form(...),
+    html_content: str = Form(...),
+    thumbnail_image_name: Optional[str] = Form(None),
+    thumbnail_image: Optional[UploadFile] = File(None),  # Made thumbnail_image optional
+    db: AsyncSession = Depends(get_db)
+):
+    # Manual validation to catch Pydantic errors and format them cleanly for the frontend
+    try:
+        blog_data = BlogUpdate(
+            slug=slug.strip(),
+            title=title.strip(),
+            description=description.strip(),
+            html_content=html_content.strip(),
+            thumbnail_image_name=thumbnail_image_name.strip() if thumbnail_image_name else None
+        )
+    except ValidationError as e:
+        errors = [{"field": err["loc"][0], "message": err["msg"]} for err in e.errors()]
+        return JSONResponse(
+            content={
+                "message": "Validation error",
+                "errors": errors,
+                "detail": errors
+            },
+            status_code=422
+        )
+
+    # Read the thumbnail image bytes safely only if a new file was uploaded
+    image_bytes = await thumbnail_image.read() if thumbnail_image and thumbnail_image.filename else None
+
     update_blog = await updateBlogService(
         db=db,
         slug=blog_data.slug,
         title=blog_data.title,
         description=blog_data.description,
         html_content=blog_data.html_content,
-        thumbnail_image=await thumbnail_image.read(),
+        thumbnail_image=image_bytes,
         thumbnail_image_name=blog_data.thumbnail_image_name,
     )
-    if update_blog == None:
-        return JSONResponse(content={"message":"Blog not found"},status_code=404)
+    
+    if update_blog is None:
+        return JSONResponse(content={"message": "Blog not found"}, status_code=404)
 
-    return JSONResponse(content=update_blog,
-                        status_code=200
-                        )
+    return JSONResponse(content={**update_blog, "message": "Blog updated successfully"}, status_code=200)
 
 
 @router.delete("/deleteBlog")
@@ -161,6 +194,7 @@ async def deleteBlog(slug:str,db:AsyncSession = Depends(get_db)):
 
 
 
+#  paginated blogs user click on next and previos or any number of blog page 
 @router.get("/getPaginatedBlog")
 async def getPaginatedBLog(page:int=1,limit:int=10,db:AsyncSession = Depends(get_db)):
     try:
