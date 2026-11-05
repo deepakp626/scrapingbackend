@@ -1,0 +1,12 @@
+{
+  "0": "BaseModel",
+  "1": "blogRoute.py",
+  "2": "db.py",
+  "3": "blogServices.py",
+  "4": "code_Engine_Route.py",
+  "5": "storage.py",
+  "6": "README.md",
+  "7": "pdfRoute.py",
+  "9": "pdf_data_pytesseract.py",
+  "11": "scrapingbackend"
+}

@@ -13,6 +13,17 @@ from storage3.exceptions import StorageApiError
 # Database Instance / session factory
 # db = SessionLocal()
 
+def _normalize_meta_keywords(meta_keywords: str | list[str] | None) -> list[str] | None:
+    if meta_keywords is None:
+        return None
+
+    keywords = meta_keywords.split(",") if isinstance(meta_keywords, str) else meta_keywords
+    return [keyword.strip() for keyword in keywords if keyword.strip()]
+
+
+def _serialize_meta_keywords(meta_keywords: list[str] | None) -> str | None:
+    return ", ".join(meta_keywords) if meta_keywords else None
+
 
 async def createBlog(
     db: AsyncSession,
@@ -22,6 +33,10 @@ async def createBlog(
     html_content: str,
     thumbnail_image: bytes | None = None,
     thumbnail_image_name: str | None = None,
+    meta_title: str | None = None,
+    meta_description: str | None = None,
+    image_alt: str | None = None,
+    meta_keywords: str | list[str] | None = None,
 ):
     """
     Create a new blog with optional thumbnail image.
@@ -115,6 +130,11 @@ async def createBlog(
         description=description,
         html_content=html_content,
         thumbnail_image_url=thumbnail_image_url,
+        thumbnail_image_name=thumbnail_image_name,
+        meta_title=meta_title,
+        meta_description=meta_description,
+        image_alt=image_alt,
+        meta_keywords=_normalize_meta_keywords(meta_keywords),
     )
 
     try:
@@ -133,6 +153,11 @@ async def createBlog(
             "html_content": new_blog.html_content,
             "date": str(new_blog.date),
             "thumbnail_image_url": new_blog.thumbnail_image_url,
+            "thumbnail_image_name": new_blog.thumbnail_image_name,
+            "meta_title": new_blog.meta_title,
+            "meta_description": new_blog.meta_description,
+            "image_alt": new_blog.image_alt,
+            "meta_keywords": _serialize_meta_keywords(new_blog.meta_keywords),
         }
 
     except IntegrityError as e:
@@ -209,19 +234,37 @@ async def getBlogBySlug(db: AsyncSession, slug: str):
             "html_content": blog.html_content,
             "date": str(blog.date),
             "thumbnail_image_url": blog.thumbnail_image_url,
-            "thumbnail_image_name": blog.thumbnail_image_name
+            "thumbnail_image_name": blog.thumbnail_image_name,
+            "meta_title": blog.meta_title,
+            "meta_description": blog.meta_description,
+            "image_alt": blog.image_alt,
+            "meta_keywords": _serialize_meta_keywords(blog.meta_keywords),
         }
     }
 
 
-async def updateBlogService(db:AsyncSession, slug:str,title:str,description:str,html_content:str,thumbnail_image:bytes | None = None,thumbnail_image_name:str | None = None):
-    result = await  db.execute(select(Blog).where(Blog.slug == slug))
+async def updateBlogService(
+    db: AsyncSession,
+    slug: str,
+    title: str,
+    description: str,
+    html_content: str,
+    thumbnail_image: bytes | None = None,
+    thumbnail_image_name: str | None = None,
+    meta_title: str | None = None,
+    meta_description: str | None = None,
+    image_alt: str | None = None,
+    meta_keywords: str | list[str] | None = None,
+):
+    result = await db.execute(select(Blog).where(Blog.slug == slug))
     blog = result.scalar_one_or_none()
-    
-    thumbnail_image_url = blog.thumbnail_image_url
+
+    if blog is None:
+        return None
+
     if thumbnail_image:
         try:
-            thumbnail_image_url = replace_image(
+            upload_result = replace_image(
                 slug,
                 new_file_bytes=thumbnail_image,
             )
@@ -231,14 +274,20 @@ async def updateBlogService(db:AsyncSession, slug:str,title:str,description:str,
                 detail=f"Image already exists : {str(e)}"
             )
 
-    if blog == None:
-        return None
+        blog.thumbnail_image_url = upload_result["url"]
 
     blog.title = title
     blog.description = description
     blog.html_content = html_content
-    blog.thumbnail_image_url = thumbnail_image_url.get("url")
     blog.thumbnail_image_name = thumbnail_image_name
+    if meta_title is not None:
+        blog.meta_title = meta_title
+    if meta_description is not None:
+        blog.meta_description = meta_description
+    if image_alt is not None:
+        blog.image_alt = image_alt
+    if meta_keywords is not None:
+        blog.meta_keywords = _normalize_meta_keywords(meta_keywords)
     await db.commit()
     await db.refresh(blog)
     return {
@@ -249,7 +298,11 @@ async def updateBlogService(db:AsyncSession, slug:str,title:str,description:str,
         "html_content": blog.html_content,
         "date": str(blog.date),
         "thumbnail_image_url":blog.thumbnail_image_url,
-        "thumbnail_image_name":blog.thumbnail_image_name
+        "thumbnail_image_name":blog.thumbnail_image_name,
+        "meta_title": blog.meta_title,
+        "meta_description": blog.meta_description,
+        "image_alt": blog.image_alt,
+        "meta_keywords": _serialize_meta_keywords(blog.meta_keywords),
     }
 
 
@@ -345,6 +398,10 @@ async def get_paginated_blogs(db: AsyncSession,page: int = 1,limit: int = 10,):
         "date": blog.date.isoformat() if blog.date else None,
         "thumbnail_image_url": blog.thumbnail_image_url,
         "thumbnail_image_name": blog.thumbnail_image_name,
+        "meta_title": blog.meta_title,
+        "meta_description": blog.meta_description,
+        "image_alt": blog.image_alt,
+        "meta_keywords": _serialize_meta_keywords(blog.meta_keywords),
     }
     for blog in blogs
 ]

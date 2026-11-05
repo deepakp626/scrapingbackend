@@ -19,6 +19,10 @@ class BlogResponse(BaseModel):
     date: date
     thumbnail_image_url:str
     thumbnail_image_name:str
+    meta_title: Optional[str] = Field(None, max_length=255)
+    meta_description: Optional[str] = Field(None, max_length=500)
+    image_alt: Optional[str] = Field(None, max_length=500)
+    meta_keywords: Optional[str] = Field(None, max_length=500)
     # class Config:
     #     from_attributes = True # Allows Pydantic to read SQLAlchemy models
 
@@ -33,6 +37,10 @@ class BlogCreate(BaseModel):
     description: str
     html_content: str
     thumbnail_image_name: str
+    meta_title: Optional[str] = Field(None, max_length=255)
+    meta_description: Optional[str] = Field(None, max_length=500)
+    image_alt: Optional[str] = Field(None, max_length=500)
+    meta_keywords: Optional[str] = Field(None, max_length=500)
 
     @classmethod
     def as_form(
@@ -42,6 +50,10 @@ class BlogCreate(BaseModel):
         description: str = Form(...),
         html_content: str = Form(...),
         thumbnail_image_name: str = Form(...),
+        meta_title: Optional[str] = Form(None),
+        meta_description: Optional[str] = Form(None),
+        image_alt: Optional[str] = Form(None),
+        meta_keywords: Optional[str] = Form(None),
     ):
         return cls(
             slug=slug.strip(),
@@ -49,6 +61,10 @@ class BlogCreate(BaseModel):
             description=description.strip(),
             html_content=html_content.strip(),
             thumbnail_image_name=thumbnail_image_name.strip(),
+            meta_title=meta_title.strip() if meta_title is not None else None,
+            meta_description=meta_description.strip() if meta_description is not None else None,
+            image_alt=image_alt.strip() if image_alt is not None else None,
+            meta_keywords=meta_keywords.strip() if meta_keywords is not None else None,
         )
 
 @router.post("/createBlog",response_model=BlogResponse)
@@ -75,6 +91,10 @@ async def createBlog(
         html_content=blog_data.html_content,
         thumbnail_image=await thumbnail_image.read(),
         thumbnail_image_name=blog_data.thumbnail_image_name,
+        meta_title=blog_data.meta_title,
+        meta_description=blog_data.meta_description,
+        image_alt=blog_data.image_alt,
+        meta_keywords=blog_data.meta_keywords,
     )
 
     return JSONResponse(
@@ -110,6 +130,10 @@ class BlogUpdate(BaseModel):
     description: str = Field(..., min_length=10)
     html_content: str = Field(..., min_length=1)
     thumbnail_image_name: Optional[str] = None
+    meta_title: Optional[str] = Field(None, min_length=1, max_length=255)
+    meta_description: Optional[str] = Field(None, min_length=1, max_length=500)
+    image_alt: Optional[str] = Field(None, min_length=1, max_length=500)
+    meta_keywords: Optional[str] = Field(None, max_length=500)
 
     @classmethod
     def as_form(
@@ -119,6 +143,10 @@ class BlogUpdate(BaseModel):
         description: str = Form(...),
         html_content: str = Form(...),
         thumbnail_image_name: Optional[str] = Form(None),
+        meta_title: Optional[str] = Form(None),
+        meta_description: Optional[str] = Form(None),
+        image_alt: Optional[str] = Form(None),
+        meta_keywords: Optional[str] = Form(None),
     ):
         return cls(
             slug=slug.strip(),
@@ -126,6 +154,10 @@ class BlogUpdate(BaseModel):
             description=description.strip(),
             html_content=html_content.strip(),
             thumbnail_image_name=thumbnail_image_name.strip() if thumbnail_image_name else None,
+            meta_title=meta_title.strip() if meta_title is not None else None,
+            meta_description=meta_description.strip() if meta_description is not None else None,
+            image_alt=image_alt.strip() if image_alt is not None else None,
+            meta_keywords=meta_keywords.strip() if meta_keywords is not None else None,
         )
 
 
@@ -136,6 +168,10 @@ async def updateBlog(
     description: str = Form(...),
     html_content: str = Form(...),
     thumbnail_image_name: Optional[str] = Form(None),
+    meta_title: Optional[str] = Form(None),
+    meta_description: Optional[str] = Form(None),
+    image_alt: Optional[str] = Form(None),
+    meta_keywords: Optional[str] = Form(None),
     thumbnail_image: Optional[UploadFile] = File(None),  # Made thumbnail_image optional
     db: AsyncSession = Depends(get_db)
 ):
@@ -146,7 +182,11 @@ async def updateBlog(
             title=title.strip(),
             description=description.strip(),
             html_content=html_content.strip(),
-            thumbnail_image_name=thumbnail_image_name.strip() if thumbnail_image_name else None
+            thumbnail_image_name=thumbnail_image_name.strip() if thumbnail_image_name else None,
+            meta_title=meta_title.strip() if meta_title is not None else None,
+            meta_description=meta_description.strip() if meta_description is not None else None,
+            image_alt=image_alt.strip() if image_alt is not None else None,
+            meta_keywords=meta_keywords.strip() if meta_keywords is not None else None,
         )
     except ValidationError as e:
         errors = [{"field": err["loc"][0], "message": err["msg"]} for err in e.errors()]
@@ -170,6 +210,10 @@ async def updateBlog(
         html_content=blog_data.html_content,
         thumbnail_image=image_bytes,
         thumbnail_image_name=blog_data.thumbnail_image_name,
+        meta_title=blog_data.meta_title,
+        meta_description=blog_data.meta_description,
+        image_alt=blog_data.image_alt,
+        meta_keywords=blog_data.meta_keywords,
     )
     
     if update_blog is None:

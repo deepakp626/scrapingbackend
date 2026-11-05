@@ -1,7 +1,8 @@
 from database.db import engine
 
 from sqlalchemy.orm import DeclarativeBase,Mapped,mapped_column
-from sqlalchemy import String,Date
+from sqlalchemy import String, Date, Text
+from sqlalchemy.dialects.postgresql import ARRAY
 from datetime import datetime
 
 class Base(DeclarativeBase):
@@ -19,7 +20,10 @@ class Blog(Base):
 
     thumbnail_image_url:Mapped[str | None] = mapped_column(String,nullable=True)
     thumbnail_image_name:Mapped[str] = mapped_column(String,nullable=True)
-    
+    meta_title: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    meta_description: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    image_alt: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    meta_keywords: Mapped[list[str] | None] = mapped_column(ARRAY(Text), nullable=True)
 
 
 

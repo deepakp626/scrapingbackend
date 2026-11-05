@@ -14,7 +14,9 @@ app.add_middleware(
 )
 
 #  connecting Database on Startup
-connectDB()
+@app.on_event("startup")
+async def startup():
+    await connectDB()
 
 
 app.include_router(router,prefix="/api")
